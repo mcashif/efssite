@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html lang="en"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link rel="stylesheet" type="text/css" href="{% static 'bootstrap/css/style.css' %}" />
+<title>Sindh Education Foundation</title>
+</head>
+
+<body>
+   <div id="page">
+		
+        <div id="header">
+        	<div id="headerTitle">Education Foundation for Sind</div>
+            <div id="headerSubText">Question Paper Generator</div>
+            
+        </div>
+        
+        <div id="bar">
+					<a href="/logout">Home</a>
+					<a href="/efs/sindhi/">Sindhi</a>
+					<a href="/efs/urdu/">Urdu</a>
+					<a href="/efs/math/">Math</a>
+					<a href="/efs/english/">English</a>
+      	</div>
+      		
+					<form action="/efs/generate/{{subject}}/{{grader}}/0/" target="_blank" method="post">
+						
+						{% csrf_token %}
+						{% load questionfilter %}
+						{% for outcome in latest_outcome_list %}				
+							{% ifchanged outcome.skill %}<div class="contentTitle"><h1>{{outcome.skill}}</h1></div> {% endifchanged %}
+							<div class="contentText">
+							<h3 style="text-align: right;" >{{outcome.outcome_text}}</h3>
+							<p>Exploratory Questions (between 0 and {{outcome|total_questionEx:subject}}):
+							<input type="number" style="width: 5em" name="e{{ outcome.id }}" id="{{ outcome.id }}" min="0" max="{{outcome|total_questionEx:subject}}" value="0"></p>
+							<p>Confirmatory Questions (between 0 and {{outcome|total_questionCon:subject}}):
+							<input type="number" style="width: 5em" name="c{{ outcome.id }}" id="{{ outcome.id }}" min="0" max="{{outcome|total_questionCon:subject}}" value="0"></p>
+							<hr>
+							</div>
+					
+						</ul>
+						    
+						{% endfor %}
+						
+						<h2>&nbsp;</h2>
+
+						<h2>&nbsp;</h2>
+						
+						<p style="text-align: center;"><input type="submit" value="generate" /></p>
+					</form>
+
+	</div>
+        
+	<div id="footer"><a>Developed by NEEF</a></div>
+
+
+</body></html>
+
+		

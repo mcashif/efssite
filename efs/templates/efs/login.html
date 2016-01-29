@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html lang="en"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link rel="stylesheet" type="text/css" href="{% static 'bootstrap/css/style.css' %}" />
+<title>Education Foundation for Sind</title>
+</head>
+
+<body>
+   <div id="page">
+		
+        <div id="header">
+        	<div id="headerTitle">Education Foundation for Sind</div>
+            <div id="headerSubText">Question Paper Generator</div>
+            
+        </div>
+        <div id="bar">
+					<a href="/login">Home</a>
+       </div>
+			<div class="contentTitle"><h1>Please Login</h1></div>
+				<div class="contentText">
+					
+					{% if form.errors %}
+					<p>Your username and password didn't match. Please try again.</p>
+					{% endif %}
+					
+					{% if next %}
+					    {% if user.is_authenticated %}
+					    <p>Your account doesn't have access to this page. To proceed,
+					    please login with an account that has access.</p>
+					    {% else %}
+					    <p>Please login to see this page.</p>
+					    {% endif %}
+					{% endif %}
+					
+					<form method="post" action="">
+					{% csrf_token %}
+					<table>
+					<tr>
+					    <td>{{ form.username.label_tag }}</td>
+					    <td>{{ form.username }}</td>
+					</tr>
+					<tr>
+					    <td>{{ form.password.label_tag }}</td>
+					    <td>{{ form.password }}</td>
+					</tr>
+					</table>
+					
+					<p style="text-align: center;"><input type="submit" value="login" /></p>
+					<input type="hidden" name="next" value="{{ next }}" />
+					</form> 
+
+				
+				</div>
+			
+			</div>
+        <div id="footer"><a>Developed by NEEF</a></div>
+
+
+</body></html>
