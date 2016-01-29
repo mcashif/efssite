@@ -3,18 +3,18 @@
 <html lang="en"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link rel="stylesheet" type="text/css" href="{% static 'bootstrap/css/style.css' %}" />
-<title>Education Foundation for Sind</title>
+<title>Education Foundation for Sindh</title>
 </head>
 
 <body>
    <div id="page">
-		
+
         <div id="header">
-        	<div id="headerTitle">Education Foundation for Sind</div>
+        	<div id="headerTitle">Education Foundation for Sindh</div>
             <div id="headerSubText">Question Paper Generator</div>
-            
+
         </div>
-        
+
         <div id="bar">
 					<a href="/logout">Home</a>
 					<a href="/efs/sindhi/">Sindhi</a>
@@ -22,11 +22,11 @@
 					<a href="/efs/math/">Math</a>
 					<a href="/efs/english/">English</a>
       	</div>
-      	
+
       			{% if isGM %}
-      			
-      				<div class="contentTitle"><h1>Generate Final English Paper</h1></div>			
-					<div class="contentText">			
+
+      				<div class="contentTitle"><h1>Generate Final English Paper</h1></div>
+					<div class="contentText">
 					<hr>
 					<p><a href="/efs/generate/4/1/1">Grade-1</a></p>
 					<p><a href="/efs/generate/4/2/1">Grade-2</a></p>
@@ -35,9 +35,9 @@
 					<p><a href="/efs/generate/4/5/1">Grade-5</a></p>
 					<hr>
 				</div>
-				
-					<div class="contentTitle"><h1>Generate Midterm English Paper</h1></div>			
-					<div class="contentText">			
+
+					<div class="contentTitle"><h1>Generate Midterm English Paper</h1></div>
+					<div class="contentText">
 					<hr>
 					<p><a href="/efs/generate/4/1/2">Grade-1</a></p>
 					<p><a href="/efs/generate/4/2/2">Grade-2</a></p>
@@ -46,11 +46,11 @@
 					<p><a href="/efs/generate/4/5/2">Grade-5</a></p>
 					<hr>
 				</div>
-		
+
 				{% endif %}
-      	
-				<div class="contentTitle"><h1>Generate Customized English Paper</h1></div>			
-					<div class="contentText">			
+
+				<div class="contentTitle"><h1>Generate Customized English Paper</h1></div>
+					<div class="contentText">
 					<hr>
 					<p><a href="/efs/outcomes/4/1">Grade-1</a></p>
 					<p><a href="/efs/outcomes/4/2">Grade-2</a></p>
@@ -59,9 +59,9 @@
 					<p><a href="/efs/outcomes/4/5">Grade-5</a></p>
 					<hr>
 				</div>
-					
+
 	</div>
-        
+
         <div id="footer"><a>Developed by NEEF</a></div>
 
 
