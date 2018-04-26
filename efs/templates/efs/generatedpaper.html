@@ -3,21 +3,21 @@
     function printpage() {
         var printAnswerButton = document.getElementById("printanswerbutton");
         var printButton = document.getElementById("printpagebutton");
-       
+
        //Set the buttons visibility to 'hidden'
-        printAnswerButton.style.visibility = 'hidden'; 
+        printAnswerButton.style.visibility = 'hidden';
         printButton.style.visibility = 'hidden';
         //Print the page content
         window.print()
-        //Set the print button to 'visible' again 
+        //Set the print button to 'visible' again
         //[Delete this line if you want it to stay hidden after printing]
         printAnswerButton.style.visibility = 'visible';
         printButton.style.visibility = 'visible';
     }
-    
+
     function showanswersheet(url){
     				  var printAnswerButton = document.getElementById("printanswerbutton");
-    				  printAnswerButton.style.visibility = 'hidden'; 
+    				  printAnswerButton.style.visibility = 'hidden';
 					  var win=window.open(url, '_blank');
 					  win.focus();
 					}
@@ -31,7 +31,7 @@
 
 <meta name="viewport" content="width=device-width"/>
 <meta name="description" content="SEF Paper Generator"/>
-<meta charset="UTF-8"> 
+<meta charset="UTF-8">
 
 <link type="text/css" rel="stylesheet" href="{% static 'bootstrap/css2/style.css' %}">
 <link href='http://fonts.googleapis.com/css?family=Rokkitt:400,700|Lato:400,300' rel='stylesheet' type='text/css'>
@@ -46,7 +46,7 @@
 		<div id="headshot" class="quickFade">
 			<img src="{% static 'bootstrap/img/neeflogo.jpg' %}" alt="NEEF logo" />
 		</div>
-		
+
 		<div id="name">
 			<h1 class="quickFade delayTwo">{{gSubjectName}} Question Paper</h1>
 			<h2 class="quickFade delayThree">{{gTotalTime}} Minutes </h2>
@@ -55,7 +55,7 @@
 		<input id="printpagebutton" type="button" value="Print Paper" onclick="printpage()"/>
 		<input id='printanswerbutton' value="Print Answers" type='button' onclick="showanswersheet('/efs/generatedanswer/')" /u>
 		</div>
-		
+
 		<div id="contactDetails" class="quickFade delayFour">
 			<ul>
 				<li>{{gGrade}}</li>
@@ -64,27 +64,31 @@
 		</div>
 		<div class="clear"></div>
 	</div>
-	
+
 	<div id="mainArea" class="quickFade delayFive">
 		<section>
 			<article>
 				<div class="sectionTitle">
 					<h1>Instructions</h1>
 				</div>
-				
+
 				<div class="sectionContent">
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer dolor metus, interdum at scelerisque in, porta at lacus. Maecenas dapibus luctus cursus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ultricies massa et erat luctus hendrerit. Curabitur non consequat enim. Vestibulum bibendum mattis dignissim. Proin id sapien quis libero interdum porttitor.</p>
+					<p>All your personal belongings (such as bags, pouches, ear/headphones, laptops etc.) must be placed at the designated area outside the examination hall. Please do not bring any valuable belongings except the essential materials required for the examinations.
+
+       Any unauthorised materials, such as books, paper, documents, pictures and electronic devices with communication and/or storage capabilities such as tablet PC, laptop, smart watch, portable audio/video/gaming devices etc. are not to be brought into the examination hall.
+
+        Handphones brought into the examination hall must be switched off at ALL times. </p>
 				</div>
 			</article>
 			<div class="clear"></div>
 		</section>
-		
-		
+
+
 		<section>
 			<div class="sectionTitle">
 				<h1>Student</h1>
 			</div>
-			
+
 			<div class="sectionContent">
 				<article>
 					<h2>Name:</h2>
@@ -95,7 +99,7 @@
 					</table>
 					<p>&nbsp;</p>
 				</article>
-				
+
 				<article>
 					<h2>Roll Number:</h2>
 					<table style="border:2px solid black;border-collapse:collapse;">
@@ -106,9 +110,9 @@
 					</tr>
 					</table>
 					<p>&nbsp;</p>
-					
+
 				</article>
-				
+
 				<article>
 					<h2>School Code:</h2>
 					<table style="border:2px solid black;border-collapse:collapse;">
@@ -123,13 +127,13 @@
 			</div>
 			<div class="clear"></div>
 		</section>
-		
-		
+
+
 		<section>
 			<div class="sectionTitle">
 				<h1>Assessor</h1>
 			</div>
-			
+
 			<div class="sectionContent">
 			<h2>Date:________________________________</h2>
 			<p>&nbsp;</p>
@@ -142,14 +146,14 @@
 			</div>
 			<div class="clear"></div>
 		</section>
-		
+
 		{% csrf_token %}
 		{% for question in gQuestionList %}
 			<section>
 				<div class="sectionTitle">
 					<h1>Question#:{{ forloop.counter }}</h1>
 				</div>
-				
+
 				<div class="sectionContent">
 					<article>
 						<h2>{{question.question_text}}</h2>
@@ -165,7 +169,7 @@
 				<div class="clear"></div>
 			</section>
 			{% endfor %}
-		
+
 	</div>
 </div>
 <script type="text/javascript">
